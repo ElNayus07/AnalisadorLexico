@@ -1,17 +1,21 @@
-package codxgo;
-import java cup.runtime.Symbol;
+package codigo;
+
+import java_cup.runtime.Symbol;
+
 parser code
 {:
     private Symbol s;
-    public void syntax_error (Symbol s) {
-    this.s=s;
-    }
     
-    public Symbol getS ( ) {
-        return this . s;
+    public void syntax_error(Symbol s){
+        this.s = s;
     }
+
+    public Symbol getS(){
+        return this.s;
+}
 :};
 terminal Int, If,Else, While, Linea, Igual, Suma, Resta, Multiplicacion, Division, Parentesis_a, Parentesis_c, Llave_a, Llave_c, Main, P_coma, Identificador, Numero, ERROR;
+
 non terminal INICIO, SENTENCIA, DECLARACION;
 
 start with INICIO;
