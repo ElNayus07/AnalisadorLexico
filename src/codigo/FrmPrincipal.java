@@ -7,6 +7,7 @@ package codigo;
 
 import static codigo.Tokens.Int;
 import static codigo.Tokens.Numero;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +19,7 @@ import java.io.StringReader;
 import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java_cup.runtime.Symbol;
 import javax.swing.JFileChooser;
 
 /**
@@ -176,6 +178,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnAnalizarsin.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         btnAnalizarsin.setText("Analizar");
+        btnAnalizarsin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalizarsinActionPerformed(evt);
+            }
+        });
 
         btnLimpiarsin.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         btnLimpiarsin.setText("Limpiar");
@@ -279,8 +286,23 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnalizarlexActionPerformed
 
     private void btnLimpiarlexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarlexActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnLimpiarlexActionPerformed
+
+    private void btnAnalizarsinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarsinActionPerformed
+        String ST = txtResultado.getText();
+        Sintax s = new Sintax(new codigo.LexerCup(new StringReader(ST)));
+        
+        try {
+            s.parse();
+            txtResultado3.setText("Analisis realizado correctamente");
+            txtResultado3.setForeground(new Color(25, 111, 61));
+        } catch (Exception ex) {
+            Symbol sym = s.getS();
+            txtResultado3.setText("Error de sintaxis. Linea: " + (sym.right + 1) + " COlumna: "+ (sym.left +1) + ", Texto: \"" + sym.value + "\"");
+            txtResultado3.setForeground(Color.red);
+        }
+    }//GEN-LAST:event_btnAnalizarsinActionPerformed
 
     /**
      * @param args the command line arguments

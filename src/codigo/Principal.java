@@ -43,8 +43,9 @@ public class Principal {
             Files.delete(rutaSin);
         }
         Files.move(
-                Paths.get("C:/Users/Nahum/Documents/AnalizadorLexico/Sintax.java"), 
-                Paths.get("C:/Users/Nahum/Documents/AnalizadorLexico/Sintax.java")
+                 
+                Paths.get("C:/Users/Nahum/Documents/AnalizadorLexico/Sintax.java"),
+                Paths.get("C:/Users/Nahum/Documents/AnalizadorLexico/src/codigo/Sintax.java")
         );
     }
 }
