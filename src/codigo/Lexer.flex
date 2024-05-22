@@ -17,17 +17,18 @@ while {lexeme=yytext(); return While;}
 {espacio} {/*Ignore*/}
 "//".* {/*Ignore*/}
 "\n" {lexeme=yytext(); return Linea;}
+";" {lexeme=yytext();return P_coma;}
 "=" {lexeme=yytext(); return Igual;}
 "+" {lexeme=yytext(); return Suma;}
 "-" {lexeme=yytext(); return Resta;}
 "*" {lexeme=yytext(); return Multiplicacion;}
-"/" {lexeme=yytext(); return Division;}
+"/" {lexeme=yytext();return Division;}
 "(" {lexeme=yytext(); return Parentesis_a;}
 ")" {lexeme=yytext(); return Parentesis_c;}
 "{" {lexeme=yytext(); return Llave_a;}
 "}" {lexeme=yytext(); return Llave_c;}
-"main" {lexeme=yytext(); return Main;}
-";" {lexeme=yytext(); return P_coma;}
+"\"" {lexeme=yytext(); return ComillaDoble;}
+"." {lexeme=yytext(); return Punto;}
 {L}({L}|{D})* {lexeme=yytext(); return Identificador;}
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero;}
  . {return ERROR;}
